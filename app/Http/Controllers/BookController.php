@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index() {
-        $books = Book::all();
+        $books = Book::paginate(10);
         return view('book.index', ['books' => $books]);
     }
 

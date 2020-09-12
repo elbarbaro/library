@@ -20,5 +20,6 @@
         </li>
         @endforeach
     </ul>
+    {{ $books->links() }}
 </div>
 @endsection
