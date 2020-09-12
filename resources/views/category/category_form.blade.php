@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
+    <title>New Categories</title>
 </head>
 <body>
     <h2>New category</h2>
-    <form>
+    <form action="/categories" method="post">
+        {{ csrf_field() }}
         <div>
             <label for="name">Name</label>
             <input type="text" name="pname">
