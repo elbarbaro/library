@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,6 +16,16 @@ class BookController extends Controller
     }
 
     public function store(Request $request) {
-        return json_encode($request->all());
+
+        $book = new Book;
+
+        $book->name = $request->pname;
+        $book->author = $request->pauthor;
+        $book->category_id = $request->pcategoryId;
+        $book->published_date = $request->ppublishedDate;
+        
+        $book->save();
+
+        return redirect('books/new');
     }
 }
