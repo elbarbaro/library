@@ -57,4 +57,9 @@ class BookController extends Controller
 
         return redirect('books');
     }
+
+    public function destroy($id) {
+        Book::destroy($id);
+        return redirect('books');
+    }
 }
