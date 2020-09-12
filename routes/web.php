@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/books', 'BookController@index');
 Route::get('/books/new', 'BookController@create');
 Route::post('/books', 'BookController@store');
+Route::get('/books/{id}/edit', 'BookController@edit');
+Route::put('/books/{id}', 'BookController@update');
 
 Route::get('/categories/new', 'CategoryController@create');
 Route::post('/categories', 'CategoryController@store');

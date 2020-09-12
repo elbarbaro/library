@@ -10,6 +10,7 @@
                 <h5>{{$book->name}}</h5>
                 <p>{{$book->author}}</p>
                 <span>{{$book->published_date}}</span>
+                <a href="/books/{{$book->id}}/edit">Edit</a>
             </div>
         </li>
         @endforeach
