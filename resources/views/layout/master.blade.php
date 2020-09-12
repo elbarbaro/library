@@ -16,7 +16,6 @@
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
-                font-weight: 100;
                 height: 100vh;
                 margin: 0;
             }
@@ -48,7 +47,9 @@
             }
 
             .content {
-                text-align: center;
+                position: absolute;
+                left: 10px;
+                top: 36px;
             }
 
             .title {
@@ -71,7 +72,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="position-ref full-height">
             <div class="top-left links">
                 @if (Auth::check())
                     <a href="{{ url('/home') }}">Home</a>
@@ -82,9 +83,7 @@
             </div>
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                @yield('data')
             </div>
         </div>
     </body>

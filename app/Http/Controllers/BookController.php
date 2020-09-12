@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public function index() {
+        $books = Book::all();
+        return view('book.index', ['books' => $books]);
+    }
+
     public function create() {
 
         $categories = Category::all();
@@ -26,6 +31,6 @@ class BookController extends Controller
         
         $book->save();
 
-        return redirect('books/new');
+        return redirect('books');
     }
 }
