@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,11 +16,12 @@ class CategoryController extends Controller
         $name = $request->pname;
         $description = $request->pdescription;
 
-        $response = array();
-        $response['name'] = $name;
-        $response['description'] = $description;
-        $response['success'] = TRUE;
+        $category = new Category();
+        $category->name = $name;
+        $category->description = $description;
 
-        return json_encode($response);
+        $category->save();
+
+        return redirect('categories/new');
     }
 }
