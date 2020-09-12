@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/books/new', 'BookController@create');
+Route::post('/books', 'BookController@store');
 
 Route::get('/categories/new', 'CategoryController@create');
 Route::post('/categories', 'CategoryController@store');
