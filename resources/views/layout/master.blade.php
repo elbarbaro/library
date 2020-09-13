@@ -13,19 +13,23 @@
         <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="position-ref full-height">
-            <div class="top-left links">
-                @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ url('/books/new') }}">Books</a>
-                    <a href="{{ url('/categories/new') }}">Categories</a>
-                @endif
-            </div>
-
-            <div class="content">
-                @yield('data')
-            </div>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo"><i class="material-icons">book</i>Library</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        @if (Auth::check())
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                        @else
+                            <li><a href="{{ url('/books/new') }}">Books</a></li>
+                            <li><a href="{{ url('/categories/new') }}">Categories</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            @yield('data')
         </div>
         <script src="{{asset('js/materialize.min.js')}}"></script>
     </body>
