@@ -1,7 +1,40 @@
 @extends('layout.master')
 
 @section('data')
-<div class="col s3"></div>
+<div class="col s3">
+    <form action="{{action('BookController@index', ['page' => $books->currentPage()])}}">
+        <h5 class="title">Filters</h5>
+        <button class="btn" type="submit">Search</button>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">Category</div>
+                <ul class="collection collapsible-body">
+                @foreach($categories as $cat)
+                    <li class="collection-item">
+                        <label>
+                            <input type="checkbox" class="filled-in" name="categoryId" value="{{$cat->id}}"/>
+                            <span>{{$cat->name}}</span>
+                        </label>
+                    </li>
+                @endforeach
+                </ul>
+            </li>
+            <li>
+                <div class="collapsible-header">Authors</div>
+                <ul class="collection collapsible-body">
+                @foreach($authors as $author)
+                    <li class="collection-item">
+                        <label>
+                            <input type="checkbox" class="filled-in" name="author" value="{{$author}}"/>
+                            <span>{{$author}}</span>
+                        </label>
+                    </li>
+                @endforeach
+                </ul>
+            </li>
+        </ul>
+    </form>
+</div>
 <div class="col s9">
     <div class="content">
         <ul class="collection">
@@ -31,3 +64,11 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, { accordion: false });
+    });
+</script>
+@endpush

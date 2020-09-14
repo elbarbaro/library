@@ -6,12 +6,15 @@ use App\Book;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
     public function index() {
         $books = Book::paginate(10);
-        return view('book.index', ['books' => $books]);
+        $categories = DB::table('categories')->select('id', 'name')->get();
+        $authors = DB::table('books')->distinct()->pluck('author');
+        return view('book.index', ['books' => $books, 'categories' => $categories, 'authors' => $authors]);
     }
 
     public function create() {
