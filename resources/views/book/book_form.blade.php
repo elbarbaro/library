@@ -2,6 +2,7 @@
 
 @section('data')
     <div class="col s12">
+        <a href="{{url()->previous()}}">Back</a>
         <div class="container">
             <h4>New book</h4>
             @if(isset($book))
