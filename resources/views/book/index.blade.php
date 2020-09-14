@@ -56,8 +56,7 @@
                             <button class="btn-flat" type="submit"><i class="material-icons">delete</i></button>
                         </form>
                         <div class="input-field">
-                            {{$book->status}}
-                            <a class="bagde modal-trigger" href="#modal1" data-status="{{$book->status}}">{{$book->status?'Available':'Not available'}}</a>
+                            <a class="bagde modal-trigger" href="#modal1" data-id="{{$book->id}}" data-status="{{$book->status}}">{{$book->status?'Available':'Not available'}}</a>
                         </div>
                     </div>
                 </div>
@@ -80,12 +79,13 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#!" class="waves-effect waves-green btn-flat">Save</a>
+            <a href="#!" class="waves-effect waves-green btn-flat" id="btnSave">Save</a>
         </div>
     </div>
 </div>
 @endsection
 @push('scripts')
+<script src="{{asset('js/request.js')}}"></script>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.collapsible');
@@ -94,8 +94,29 @@
 
         var onOpenStartCallback = function(elemModal) {
             var inputStatus = document.getElementById('inputStatus');
+            var btnSave = document.getElementById('btnSave');
             var status = this._openingTrigger.dataset.status;
+            var id = this._openingTrigger.dataset.id;
             inputStatus.checked = (status === '1' ? true : false);
+
+            var success = result => {
+                console.log(result);
+                inputStatus.checked = result.status;
+                this._openingTrigger.dataset.status = result.status?'1':'0';
+                this._openingTrigger.innerText=result.status?'Available':'Not available';
+                this.close();
+                M.toast({html: 'Status updated correctly'});
+            }
+
+            var error = error => {
+                this.close();
+                console.error(error);
+                M.toast({html: 'Error'});
+            }
+
+            btnSave.onclick = function(e) {
+                put('api/books/status', {id: id}, success, error);
+            }
         }
 
         var instancesModal = M.Modal.init(elemsModal, {

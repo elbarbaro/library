@@ -85,4 +85,19 @@ class BookController extends Controller
         Book::destroy($id);
         return redirect('books');
     }
+
+    public function status(Request $request) {
+        $book = Book::find($request->id);
+        if($book) {
+            $book->status = !$book->status;
+            $book->save();
+            $code = 200;
+            $data = ['success' => TRUE, 'status' => $book->status];
+        } else {
+            $code = 400;
+            $data = ['success' => FALSE, 'status' => null];
+        }
+        
+        return response()->json($data, $code);
+    }
 }
