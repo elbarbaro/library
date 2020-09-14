@@ -2,7 +2,7 @@
 
 @section('data')
 <div class="col s3">
-    <form action="{{action('BookController@index', ['page' => $books->currentPage()])}}">
+    <form action="{{action('BookController@search', ['page' => $books->currentPage()])}}">
         <h5 class="title">Filters</h5>
         <button class="btn" type="submit">Search</button>
         <ul class="collapsible">
@@ -12,7 +12,7 @@
                 @foreach($categories as $cat)
                     <li class="collection-item">
                         <label>
-                            <input type="checkbox" class="filled-in" name="categoryId" value="{{$cat->id}}"/>
+                            <input type="checkbox" class="filled-in" name="categoryId[]" value="{{$cat->id}}"/>
                             <span>{{$cat->name}}</span>
                         </label>
                     </li>
@@ -25,7 +25,7 @@
                 @foreach($authors as $author)
                     <li class="collection-item">
                         <label>
-                            <input type="checkbox" class="filled-in" name="author" value="{{$author}}"/>
+                            <input type="checkbox" class="filled-in" name="author[]" value="{{$author}}"/>
                             <span>{{$author}}</span>
                         </label>
                     </li>

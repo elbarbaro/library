@@ -17,6 +17,26 @@ class BookController extends Controller
         return view('book.index', ['books' => $books, 'categories' => $categories, 'authors' => $authors]);
     }
 
+    public function search(Request $request) {
+        $categoryIds = $request->input('categoryId');
+        $authors = $request->input('author');
+
+        if($categoryIds){
+            $books = Book::whereIn('category_id', $categoryIds);
+        } else {
+            $books = Book::query();
+        }
+        if($authors) {
+            $books->orWhere(function($query) use ($authors) {
+                $query->whereIn('author', $authors);
+            });
+        }
+        $books = $books->paginate(10);
+        $categories = DB::table('categories')->select('id', 'name')->get();
+        $authors = DB::table('books')->distinct()->pluck('author');
+        return view('book.index', ['books' => $books, 'categories' => $categories, 'authors' => $authors]);
+    }
+
     public function create() {
 
         $categories = Category::all();
