@@ -55,6 +55,9 @@
                             {{method_field('DELETE')}}
                             <button class="btn-flat" type="submit"><i class="material-icons">delete</i></button>
                         </form>
+                        <div class="input-field">
+                            <span class="bagde">{{$book->status?'Available':'Not available'}}</span>
+                        </div>
                     </div>
                 </div>
             </li>
