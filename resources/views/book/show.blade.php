@@ -19,9 +19,15 @@
             <input type="hidden" name="id" value="{{$book->id}}">
             <div class="input-field">
                 <label for="user">User</label>
+                @if($book->user)
+                <input type="text" name="puser" id="user" value="{{$book->user->user}}" readonly>
+                @else
                 <input type="text" name="puser" id="user">
+                @endif
             </div>
-            <input class="btn" type="submit" value="Register">
+            @unless($book->user)
+                <input class="btn" type="submit" value="Register">
+            @endunless
         </form>
     </div>
 </div>
