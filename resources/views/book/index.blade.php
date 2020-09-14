@@ -13,6 +13,7 @@
                         <p>{{$book->author}} <br>
                             <span>{{$book->published_date}}</span>
                         </p>
+                        <span class="new badge left" style="margin-left:0" data-badge-caption="{{$book->category->name}}"></span>
                     </div>
                     <div class="col s3 right-align">
                         <a class="btn-flat" href="/books/{{$book->id}}/edit"><i class="material-icons">edit</i></a>
