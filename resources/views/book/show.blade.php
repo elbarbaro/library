@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col s3 left-align">
         <h5>Borrow</h5>
-        <form action="" method="post">
+        <form action="{{action('BorrowController@store')}}" method="post">
         {{ csrf_field() }}
             <input type="hidden" name="id" value="{{$book->id}}">
             <div class="input-field">

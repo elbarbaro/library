@@ -26,3 +26,5 @@ Route::get('/books/{id}', 'BookController@show');
 
 Route::get('/categories/new', 'CategoryController@create');
 Route::post('/categories', 'CategoryController@store');
+
+Route::post('/borrows', 'BorrowController@store');
