@@ -7,7 +7,7 @@
         <button class="btn" type="submit">Search</button>
         <ul class="collapsible">
             <li>
-                <div class="collapsible-header">Category</div>
+                <div class="collapsible-header">Categories</div>
                 <ul class="collection collapsible-body">
                 @foreach($categories as $cat)
                     <li class="collection-item">
@@ -56,7 +56,11 @@
                             <button class="btn-flat" type="submit"><i class="material-icons">delete</i></button>
                         </form>
                         <div class="input-field">
+                            @if($book->user)
+                            <span class="new badge brown" data-badge-caption="Borrowed"></span>
+                            @else
                             <a class="bagde modal-trigger" href="#modal1" data-id="{{$book->id}}" data-status="{{$book->status}}">{{$book->status?'Available':'Not available'}}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
