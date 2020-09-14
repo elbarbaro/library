@@ -56,7 +56,8 @@
                             <button class="btn-flat" type="submit"><i class="material-icons">delete</i></button>
                         </form>
                         <div class="input-field">
-                            <span class="bagde">{{$book->status?'Available':'Not available'}}</span>
+                            {{$book->status}}
+                            <a class="bagde modal-trigger" href="#modal1" data-status="{{$book->status}}">{{$book->status?'Available':'Not available'}}</a>
                         </div>
                     </div>
                 </div>
@@ -65,13 +66,41 @@
         </ul>
     {{ $books->links() }}
     </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modify status</h4>
+            <div class="switch">
+                <label>
+                Not available
+                <input type="checkbox" id="inputStatus">
+                <span class="lever"></span>
+                Available
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a href="#!" class="waves-effect waves-green btn-flat">Save</a>
+        </div>
+    </div>
 </div>
 @endsection
 @push('scripts')
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.collapsible');
+        var elemsModal = document.querySelectorAll('.modal');
         var instances = M.Collapsible.init(elems, { accordion: false });
+
+        var onOpenStartCallback = function(elemModal) {
+            var inputStatus = document.getElementById('inputStatus');
+            var status = this._openingTrigger.dataset.status;
+            inputStatus.checked = (status === '1' ? true : false);
+        }
+
+        var instancesModal = M.Modal.init(elemsModal, {
+            onOpenStart: onOpenStartCallback
+        });
     });
 </script>
 @endpush
