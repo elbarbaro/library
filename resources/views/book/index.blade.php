@@ -42,8 +42,8 @@
             <li class="collection-item">
                 <div class="row">
                     <div class="col s9">
-                        <h5 class="title">{{$book->name}}</h5>
-                        <p>{{$book->author}} <br>
+                        <h5 class="title"><a href="{{action('BookController@show', $book->id)}}">{{$book->name}}<a></h5>
+                        <p class="black-text">{{$book->author}} <br>
                             <span>{{$book->published_date}}</span>
                         </p>
                         <span class="new badge left" style="margin-left:0" data-badge-caption="{{$book->category->name}}"></span>

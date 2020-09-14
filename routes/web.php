@@ -22,6 +22,7 @@ Route::get('/books/{id}/edit', 'BookController@edit');
 Route::put('/books/{id}', 'BookController@update');
 Route::delete('/books/{id}', 'BookController@destroy');
 Route::get('/books/search', 'BookController@search');
+Route::get('/books/{id}', 'BookController@show');
 
 Route::get('/categories/new', 'CategoryController@create');
 Route::post('/categories', 'CategoryController@store');

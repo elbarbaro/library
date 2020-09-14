@@ -17,6 +17,11 @@ class BookController extends Controller
         return view('book.index', ['books' => $books, 'categories' => $categories, 'authors' => $authors]);
     }
 
+    public function show($id) {
+        $book = Book::find($id);
+        return view('book.show', ['book' => $book]);
+    }
+
     public function search(Request $request) {
         $categoryIds = $request->input('categoryId');
         $authors = $request->input('author');
