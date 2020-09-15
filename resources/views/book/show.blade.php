@@ -12,23 +12,21 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s3 left-align">
+    <div class="col s5 left-align">
+    @if($book->user)
+        <h5>This book was borrowed to {{$book->user->user}}</h5>
+    @else
         <h5>Borrow</h5>
         <form action="{{action('BorrowController@store')}}" method="post">
         {{ csrf_field() }}
             <input type="hidden" name="id" value="{{$book->id}}">
             <div class="input-field">
                 <label for="user">User</label>
-                @if($book->user)
-                <input type="text" name="puser" id="user" value="{{$book->user->user}}" readonly>
-                @else
                 <input type="text" name="puser" id="user">
-                @endif
             </div>
-            @unless($book->user)
-                <input class="btn" type="submit" value="Register">
-            @endunless
+            <input class="btn" type="submit" value="Register">
         </form>
+    @endif
     </div>
 </div>
 @endsection
