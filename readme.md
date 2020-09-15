@@ -1,51 +1,66 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+### Library Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+A web application to search books in a library.
 
-## About Laravel
+#### Requirements
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+- [PHP 7](https://www.php.net/downloads.php)
+- [Composer](https://getcomposer.org/)
+- [Laravel 5.4](https://laravel.com/docs/5.4/installation)
+- [MySQL Server (community edition)](https://dev.mysql.com/downloads/mysql/)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##### Database configuration
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Open a terminal in your operating system. Write the follow setences:
 
-## Learning Laravel
+Connecting to the MySQL Server. Use you root user and password
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+    mysql -u root -p
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Create database for the library system
 
-## Laravel Sponsors
+    create database library;
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+Create database user 
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+    create user 'admin'@'localhost' identified by 'secret'
 
-## Contributing
+Grant all permissions to this user
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+    grant all privileges on library.* to 'admin'@'localhost';
 
-## Security Vulnerabilities
+##### How to run the app
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Open a terminal in your operating system. Write the follow setences:
+
+Download project git repository 
+
+    git clone https://github.com/elbarbaro/library.git
+
+Enter to the project directory
+
+    cd library
+
+Download the project dependecies
+
+    php composer.phar install
+
+Create tables with default entries in them
+
+    php artisan migrate --seed
+
+Run the server
+
+    php artisan serve
+
+Open you browser in the url [http:localhost:8000](http:localhost:8000) (make you sure don't use this port).
+
+# It's works!
+
+![](app-screenshot.png)
+
+Now you create, update, delete books and see them in the list,  you can to do more. Thanks and happy coding 😊
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The library project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
