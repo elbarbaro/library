@@ -47,12 +47,12 @@
                     @endif
                     <label for="category">Category</label>
                 </div>
-                <div>
+                <div class="input-field">
                     <label for="publishedDate">Published Date</label>
                     @if(isset($book))
-                    <input id="publishedDate" class="datepicker" name="ppublishedDate" value="{{$book->published_date}}">
+                    <input id="publishedDate" type="number" name="ppublishedDate" value="{{$book->published_date}}">
                     @else
-                    <input id="publishedDate" class="datepicker" name="ppublishedDate">
+                    <input id="publishedDate" type="number" name="ppublishedDate" placeholder="1994">
                     @endif
                 </div>
                 @if(isset($book))
@@ -69,9 +69,7 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
-            var elemsPicker = document.querySelectorAll('.datepicker');
             var instances = M.FormSelect.init(elems);
-            var instancesPicker = M.Datepicker.init(elemsPicker, { format: 'yyyy-mm-dd'});
         });
     </script>
 @endpush
