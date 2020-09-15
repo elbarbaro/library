@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class BookController extends Controller
 {
     public function index() {
-        $books = Book::paginate(10);
+        $books = Book::latest()->paginate(10);
         $categories = DB::table('categories')->select('id', 'name')->get();
         $authors = DB::table('books')->distinct()->pluck('author');
         return view('book.index', ['books' => $books, 'categories' => $categories, 'authors' => $authors]);
