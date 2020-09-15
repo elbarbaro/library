@@ -17,21 +17,21 @@
                 <div class="input-field">
                     <label for="name">Name</label>
                     @if(isset($book))
-                    <input type="text" name="pname" value="{{$book->name}}">
+                    <input type="text" name="pname" value="{{$book->name}}" required>
                     @else
-                    <input type="text" name="pname">
+                    <input type="text" name="pname" required>
                     @endif
                 </div>
                 <div class="input-field">
                     <label for="name">Author</label>
                     @if(isset($book))
-                    <input id="name" type="text" name="pauthor" value="{{$book->author}}">
+                    <input id="name" type="text" name="pauthor" value="{{$book->author}}" required>
                     @else
-                    <input id="name" type="text" name="pauthor">
+                    <input id="name" type="text" name="pauthor" required>
                     @endif
                 </div>
                 <div class="input-field">
-                    <select id="category" name="pcategoryId">
+                    <select id="category" name="pcategoryId" required>
                     @if(isset($book))
                         <option selected disabled>Choose a category</option>
                         @foreach ($categories as $category)
@@ -50,9 +50,9 @@
                 <div class="input-field">
                     <label for="publishedDate">Published Date</label>
                     @if(isset($book))
-                    <input id="publishedDate" type="number" name="ppublishedDate" value="{{$book->published_date}}">
+                    <input id="publishedDate" type="number" name="ppublishedDate" value="{{$book->published_date}}" required>
                     @else
-                    <input id="publishedDate" type="number" name="ppublishedDate" placeholder="1994">
+                    <input id="publishedDate" type="number" name="ppublishedDate" placeholder="1994" required>
                     @endif
                 </div>
                 @if(isset($book))

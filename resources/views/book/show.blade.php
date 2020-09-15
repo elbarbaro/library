@@ -22,7 +22,7 @@
             <input type="hidden" name="id" value="{{$book->id}}">
             <div class="input-field">
                 <label for="user">User</label>
-                <input type="text" name="puser" id="user">
+                <input type="text" name="puser" id="user" required>
             </div>
             <input class="btn" type="submit" value="Register">
         </form>
