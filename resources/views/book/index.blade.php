@@ -146,7 +146,7 @@
             }
 
             btnSave.onclick = function(e) {
-                put('api/books/status', {id: id}, success, error);
+                put("{{url('api/books/status')}}", {id: id}, success, error);
             }
         }
 
