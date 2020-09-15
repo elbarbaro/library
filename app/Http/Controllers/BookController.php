@@ -46,7 +46,7 @@ class BookController extends Controller
         if($borrow) {
             $books->borrowed();
         }
-        $books = $books->paginate(10);
+        $books = $books->latest()->paginate(10);
         $books->appends($request->except('page'));
         $categories = DB::table('categories')->select('id', 'name')->get();
         $authors = DB::table('books')->distinct()->pluck('author');
