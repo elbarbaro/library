@@ -6,7 +6,7 @@
         <h5 class="title">Filters</h5>
         <button class="btn" type="submit">Search</button>
         <ul class="collapsible">
-            <li>
+            <li class="active">
                 <div class="collapsible-header">Categories</div>
                 <ul class="collection collapsible-body">
                 @foreach($categories as $cat)
