@@ -32,6 +32,29 @@
                 @endforeach
                 </ul>
             </li>
+            <li>
+                <div class="collapsible-header">Status</div>
+                <ul class="collection collapsible-body">
+                    <li class="collection-item">
+                        <label>
+                            <input type="checkbox" class="filled-in" name="status[]" value="1"/>
+                            <span>Available</span>
+                        </label>
+                    </li>
+                    <li class="collection-item">
+                        <label>
+                            <input type="checkbox" class="filled-in" name="status[]" value="0"/>
+                            <span>Not available</span>
+                        </label>
+                    </li>
+                    <li class="collection-item">
+                        <label>
+                            <input type="checkbox" class="filled-in" name="borrow" value="1"/>
+                            <span>Borrowed</span>
+                        </label>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </form>
 </div>
