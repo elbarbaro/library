@@ -61,6 +61,7 @@
 <div class="col s9">
     <div class="content">
         <ul class="collection">
+            @if($books->count() > 0)
             @foreach($books as $book)
             <li class="collection-item">
                 <div class="row">
@@ -89,6 +90,9 @@
                 </div>
             </li>
             @endforeach
+            @else
+            <p class="center-align">No results found</p>
+            @endif
         </ul>
     {{ $books->links() }}
     </div>
