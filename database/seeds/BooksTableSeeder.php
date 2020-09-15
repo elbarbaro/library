@@ -12,7 +12,6 @@ class BooksTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Book::class, 20)->create();
         DB::table('books')->insert(
             [
                 'name' => 'Cosmos',
