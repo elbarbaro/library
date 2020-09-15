@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+    return redirect('home');
 });
 
-Route::get('/books', 'BookController@index');
+Route::get('/home', 'BookController@index');
 Route::get('/books/new', 'BookController@create');
 Route::post('/books', 'BookController@store');
 Route::get('/books/{id}/edit', 'BookController@edit');

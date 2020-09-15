@@ -16,13 +16,12 @@
         <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo"><i class="material-icons">book</i>Library</a>
+                    <a href="{{action('BookController@index')}}" class="brand-logo"><i class="material-icons">book</i>Library</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
                             <li><a href="{{ url('/home') }}">Home</a></li>
                         @else
-                            <li><a href="{{ url('/books/new') }}">Books</a></li>
-                            <li><a href="{{ url('/categories/new') }}">Categories</a></li>
+                            <li><a class="btn" href="{{ url('/books/new') }}">New book</a></li>
                         @endif
                     </ul>
                 </div>
