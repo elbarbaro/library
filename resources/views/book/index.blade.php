@@ -94,7 +94,7 @@
             <p class="center-align">No results found</p>
             @endif
         </ul>
-    {{ $books->links() }}
+    {{ $books->appends(request()->query())->links() }}
     </div>
     <div id="modal1" class="modal">
         <div class="modal-content">
