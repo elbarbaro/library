@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -57,7 +58,7 @@ class BookController extends Controller
         return view('book.book_form', ['categories' => $categories]);
     }
 
-    public function store(Request $request) {
+    public function store(BookRequest $request) {
 
         $book = new Book;
 
@@ -77,7 +78,7 @@ class BookController extends Controller
         return view('book.book_form', ['book' => $book, 'categories' => $categories, 'title' => 'Edit book']);
     }
 
-    public function update(Request $request, $id) {
+    public function update(BookRequest $request, $id) {
         $name = $request->pname;
         $author = $request->pauthor;
         $category_id = $request->pcategoryId;

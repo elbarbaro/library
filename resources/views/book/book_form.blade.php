@@ -5,6 +5,13 @@
         <a href="{{url()->previous()}}">Back</a>
         <div class="container">
             <h4>New book</h4>
+            @if($errors->any())
+            <span class="toast amber" style="top: 0">
+                @foreach ($errors->all() as $error)
+                    {{ $error }} <br>
+                @endforeach
+            </span>
+            @endif
             @if(isset($book))
             <form action="{{action('BookController@update', $book->id)}}" method="post">
             @else
