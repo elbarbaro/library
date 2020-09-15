@@ -43,7 +43,7 @@ Enter to the project directory
 
 Download the project dependecies
 
-    php composer.phar install
+    composer install
 
 Create tables with default entries in them
 
