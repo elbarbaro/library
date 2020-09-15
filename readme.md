@@ -9,7 +9,11 @@ A web application to search books in a library.
 - [Laravel 5.4](https://laravel.com/docs/5.4/installation)
 - [MySQL Server (community edition)](https://dev.mysql.com/downloads/mysql/)
 
+<<<<<<< HEAD
 #### Database configuration
+=======
+##### Database configuration
+>>>>>>> 73f75cd49fa022c5785ac85f394a56658cffc52b
 
 Open a terminal in your operating system. Write the follow setences:
 
@@ -29,7 +33,11 @@ Grant all permissions to this user
 
     grant all privileges on library.* to 'admin'@'localhost';
 
+<<<<<<< HEAD
 #### How to run the app
+=======
+##### How to run the app
+>>>>>>> 73f75cd49fa022c5785ac85f394a56658cffc52b
 
 Open a terminal in your operating system. Write the follow setences:
 
