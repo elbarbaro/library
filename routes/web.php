@@ -15,6 +15,10 @@ Route::get('/', function(){
     return redirect('home');
 });
 
+Route::get('/books', function(){
+    return redirect('home');
+});
+
 Route::get('/home', 'BookController@index');
 Route::get('/books/new', 'BookController@create');
 Route::post('/books', 'BookController@store');
