@@ -22,3 +22,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name,
+        'author' => $faker->name,
+        'category_id' => $faker->randomDigit + 1,
+        'published_date' => $faker->numberBetween($min = 1950, $max = 2020),
+    ];
+});
