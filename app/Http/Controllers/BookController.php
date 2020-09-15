@@ -68,7 +68,7 @@ class BookController extends Controller
         
         $book->save();
 
-        return redirect('books');
+        return redirect('home')->with('status', 'Book created successfuly');
     }
 
     public function edit($id) {
@@ -92,12 +92,12 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('books');
+        return redirect('home')->with('status', 'Book updated successfuly');
     }
 
     public function destroy($id) {
         Book::destroy($id);
-        return redirect('books');
+        return redirect('home')->with('status', 'Book deleted successfuly');
     }
 
     public function status(Request $request) {

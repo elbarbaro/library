@@ -153,6 +153,9 @@
         var instancesModal = M.Modal.init(elemsModal, {
             onOpenStart: onOpenStartCallback
         });
+
+        var status = "{{session('status')}}";
+        if(status) M.toast({html: status});
     });
 </script>
 @endpush
