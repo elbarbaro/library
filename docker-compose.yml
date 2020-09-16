@@ -1,0 +1,63 @@
+version: "3.7"
+services:
+    
+    #PHP Service
+    app:
+        build:
+            args:
+                user: barbaro
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: library-app/laravel
+        container_name: app
+        restart: unless-stopped
+        working_dir: /var/www/
+        # Save data
+        volumes:
+            - ./:/var/www
+        networks:
+            -  app-network
+    
+    #Ngnix Service
+    werbserver:
+        image: nginx:1.17-alpine
+        container_name: werbserver
+        restart: unless-stopped
+        ports:
+            - 8000:80
+        volumes: 
+            - ./:/var/www
+            - ./docker-compose/nginx/conf.d/:/etc/nginx/conf.d
+        networks: 
+            - app-network
+
+    # MySQL Service
+    db:
+        image: mysql
+        container_name: db
+        restart: unless-stopped
+        environment: 
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - dbdata:/var/lib/mysql
+            - ./docker-compose/mysql/my.cnf:/etc/mysql/my.cnf
+            - dbdatafiles:/var/lib/mysql-files
+        networks: 
+            - app-network
+    
+    # Docker networks
+
+networks:
+    app-network:
+        driver: bridge
+volumes: 
+    dbdata:
+        driver: local
+    dbdatafiles:
+        driver: local
