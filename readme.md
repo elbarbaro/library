@@ -61,7 +61,7 @@ Open you browser in the url [http:localhost:8000](http:localhost:8000) (make you
 
 Now you create, update, delete books and see them in the list,  you can to do more. 
 
-You can check the [app in live demo](http://barbaro-library.herokuapp.com). Thanks and happy coding 😊
+You can check the app in [live demo](http://barbaro-library.herokuapp.com). Thanks and happy coding 😊
 
 ## License
 
